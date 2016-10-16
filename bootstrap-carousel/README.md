@@ -1,4 +1,4 @@
-# Twitter Bootrap Carousel
+# Twitter Bootstrap Carousel
 Twitter Bootstrap Carousel example for Liferay 7 / DXP.
 
 ## Configurable features
