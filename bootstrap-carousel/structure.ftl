@@ -30,6 +30,29 @@
         },
         {
             "label": {
+                "en_US": "Image Width"
+            },
+            "predefinedValue": {
+                "en_US": "auto"
+            },
+            "style": {
+                "en_US": ""
+            },
+            "tip": {
+                "en_US": "Set a fixed value or 100% to scale the slider to the parent containers width."
+            },
+            "dataType": "string",
+            "indexType": "keyword",
+            "localizable": true,
+            "name": "imageWidth",
+            "readOnly": false,
+            "repeatable": false,
+            "required": false,
+            "showLabel": true,
+            "type": "text"
+        },
+        {
+            "label": {
                 "en_US": "Random Starting Slide"
             },
             "predefinedValue": {

@@ -6,7 +6,6 @@
 	<#assign repeat = "true" />
 	<#assign intervalTime = interval.data?number * 1000 />
 	<#assign randomize = getterUtil.getBoolean(randomize.data) />
-	
 	<#if imageWidth.data?has_content >
 		<style>
 			#${carouselId} .carousel-image { width: ${imageWidth.data}; }
@@ -31,7 +30,7 @@
 			<#assign file = item.children[1].data />
 			<#assign link = item.children[2].data />
 
-			<#assign carouselItems = carouselItems + ["<div class=\"item\"><a href=\"${link}\"><img class="carousel-image" src=\"" + file + "\" /><div class=\"carousel-caption\">" + text + "</div></a></div>"] />
+			<#assign carouselItems = carouselItems + ["<div class=\"item\"><a href=\"${link}\"><img class=\"carousel-image\" src=\"" + file + "\" /><div class=\"carousel-caption\">" + text + "</div></a></div>"] />
 			<#assign carouselIndicators = carouselIndicators + ["<li data-target=\"#" + carouselId + "\" data-slide-to=\"" + item?index + "\"></li>"] />
 		</#if>
 	</#list>
