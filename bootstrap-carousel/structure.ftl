@@ -42,14 +42,54 @@
                 "en_US": "Set a fixed value or 100% to scale the slider to the parent containers width."
             },
             "dataType": "string",
-            "indexType": "keyword",
-            "localizable": true,
+            "indexType": "",
+            "localizable": false,
             "name": "imageWidth",
             "readOnly": false,
             "repeatable": false,
             "required": false,
             "showLabel": true,
             "type": "text"
+        },
+        {
+            "label": {
+                "en_US": "Transition Effect"
+            },
+            "options": [
+                {
+                    "value": "",
+                    "label": {
+                        "en_US": "slide"
+                    }
+                },
+                {
+                    "value": "carousel-fade",
+                    "label": {
+                        "en_US": "fade"
+                    }
+                }
+            ],
+            "predefinedValue": {
+                "en_US": [
+                    ""
+                ]
+            },
+            "style": {
+                "en_US": ""
+            },
+            "tip": {
+                "en_US": ""
+            },
+            "dataType": "string",
+            "indexType": "",
+            "localizable": false,
+            "multiple": false,
+            "name": "effect",
+            "readOnly": false,
+            "repeatable": false,
+            "required": false,
+            "showLabel": true,
+            "type": "select"
         },
         {
             "label": {

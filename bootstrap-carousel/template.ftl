@@ -6,11 +6,52 @@
 	<#assign repeat = "true" />
 	<#assign intervalTime = interval.data?number * 1000 />
 	<#assign randomize = getterUtil.getBoolean(randomize.data) />
-	<#if imageWidth.data?has_content >
-		<style>
+	<#assign transitionEffect = effect.data?has_content?then(effect.data, '') />
+	
+	<#-- STYLES REQUIRED FOR THE FADE IN EFFECT AND IMAGE WIDTH -->
+	
+	<style>	
+
+		<#-- IMAGE WIDTH -->
+		
+		<#if imageWidth.data?has_content >
 			#${carouselId} .carousel-image { width: ${imageWidth.data}; }
-		</style>
-	</#if>
+		</#if>
+
+		<#-- FADE EFFECT -->
+
+		<#-- original solution by https://codepen.io/Rowno/pen/Afykb -->
+		
+		#${carouselId}.carousel-fade .carousel-inner .item {
+			-webkit-transition-property: opacity;
+			transition-property: opacity;
+		}
+		
+		#${carouselId}.carousel-fade .carousel-inner .item,
+		#${carouselId}.carousel-fade .carousel-inner .active.left,
+		#${carouselId}.carousel-fade .carousel-inner .active.right {
+			opacity: 0;
+		}
+		
+		#${carouselId}.carousel-fade .carousel-inner .active,
+		#${carouselId}.carousel-fade .carousel-inner .next.left,
+		#${carouselId}.carousel-fade .carousel-inner .prev.right {
+			opacity: 1;
+		}
+		
+		#${carouselId}.carousel-fade .carousel-inner .next,
+		#${carouselId}.carousel-fade .carousel-inner .prev,
+		#${carouselId}.carousel-fade .carousel-inner .active.left,
+		#${carouselId}.carousel-fade .carousel-inner .active.right {
+			left: 0;
+			-webkit-transform: translate3d(0, 0, 0);
+			transform: translate3d(0, 0, 0);
+		}
+		
+		#${carouselId}.carousel-fade .carousel-control {
+			z-index: 2;
+		}
+	</style>
 		
 	<#assign carouselItems = [] />
 	<#assign carouselIndicators = [] />
@@ -39,7 +80,7 @@
 	
 	<#if (carouselItems?size>0) >
 	
-		<div class="carousel slide" data-interval="${intervalTime?string}" data-pause="${pauseEvent}" data-ride="carousel" data-wrap="${repeat}" id="${carouselId}">
+		<div class="carousel slide ${transitionEffect}" data-interval="${intervalTime?string}" data-pause="${pauseEvent}" data-ride="carousel" data-wrap="${repeat}" id="${carouselId}">
 
 			<div class="carousel-inner">
 	 
