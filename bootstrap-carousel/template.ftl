@@ -90,7 +90,7 @@
 	
 	        <#assign captionIconBlock = "" />
     		<#if item.captionIcon.data?has_content>
-    		    <#assign captionIconBlock = "<div class="icon"><img src=\"" + item.captionIcon.data + "\" /</div>" />
+    		    <#assign captionIconBlock = "<div class=\"icon\"><img src=\"" + item.captionIcon.data + "\" /></div>" />
     		</#if>
     		
 			<#assign title = item.data />
