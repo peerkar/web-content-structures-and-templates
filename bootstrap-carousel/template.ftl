@@ -12,6 +12,25 @@
 	
 	<style>	
 
+		<#-- CAROUSEL CAPTION FULL -->
+
+		<#-- Full width -->
+
+		#${carouselId} .carousel-caption {
+			bottom: 0;
+			left: 0;
+			padding-bottom: 60px;
+			right: 0;
+		}
+
+		#${carouselId} .carousel-caption .icon {
+			display: inline-block;
+		}
+
+		#${carouselId} .carousel-caption .text {
+			display: inline-block;
+		}
+		
 		<#-- IMAGE WIDTH -->
 		
 		<#if imageWidth.data?has_content >
@@ -19,21 +38,23 @@
 		</#if>
 
 		<#-- FADE EFFECT -->
-
-		<#-- original solution by https://codepen.io/Rowno/pen/Afykb -->
 		
 		#${carouselId}.carousel-fade .carousel-inner .item {
 			-webkit-transition-property: opacity;
 			transition-property: opacity;
 		}
-		
-		#${carouselId}.carousel-fade .carousel-inner .item,
+
+		#${carouselId}.carousel-fade .carousel-inner .active {
+		    opacity: 1;
+		}
+
 		#${carouselId}.carousel-fade .carousel-inner .active.left,
 		#${carouselId}.carousel-fade .carousel-inner .active.right {
-			opacity: 0;
-		}
-		
-		#${carouselId}.carousel-fade .carousel-inner .active,
+            left: 0;
+            opacity: 0;
+            z-index: 1;
+        }
+
 		#${carouselId}.carousel-fade .carousel-inner .next.left,
 		#${carouselId}.carousel-fade .carousel-inner .prev.right {
 			opacity: 1;
@@ -43,13 +64,12 @@
 		#${carouselId}.carousel-fade .carousel-inner .prev,
 		#${carouselId}.carousel-fade .carousel-inner .active.left,
 		#${carouselId}.carousel-fade .carousel-inner .active.right {
-			left: 0;
 			-webkit-transform: translate3d(0, 0, 0);
 			transform: translate3d(0, 0, 0);
 		}
 		
 		#${carouselId}.carousel-fade .carousel-control {
-			z-index: 2;
+		    z-index: 2;
 		}
 	</style>
 		
@@ -60,18 +80,30 @@
 	
 	<#list title.getSiblings() as item>
 			 
-		<#assign visibleFrom = item.children[3].data?datetime(dateFormat) />
-		<#assign visibleTo = item.children[4].data?datetime(dateFormat) />
+		<#assign visibleFrom = item.visibleFrom.data?datetime(dateFormat) />
+		<#assign visibleTo = item.visibleTo.data?datetime(dateFormat) />
 		<#assign visible = (.now>visibleFrom) && (.now<visibleTo) />
 	
 		<#if visible>
 	
+    		<#assign captionBg = item.captionBackground.data />
+	
+	        <#assign captionIconBlock = "" />
+    		<#if item.captionIcon.data?has_content>
+    		    <#assign captionIconBlock = "<div class="icon"><img src=\"" + item.captionIcon.data + "\" /</div>" />
+    		</#if>
+    		
 			<#assign title = item.data />
-			<#assign text = item.children[0].data />
-			<#assign file = item.children[1].data />
-			<#assign link = item.children[2].data />
 
-			<#assign carouselItems = carouselItems + ["<div class=\"item\"><a href=\"${link}\"><img class=\"carousel-image\" src=\"" + file + "\" /><div class=\"carousel-caption\">" + text + "</div></a></div>"] />
+	        <#assign captionTextBlock = "" />
+    		<#if item.captionText.data?has_content>
+				<#assign captionTextBlock = "<div class=\"text\">" + item.captionText.data + "</div>" />
+			</#if>
+			
+			<#assign file = item.image.data />
+			<#assign link = item.link.data />
+
+			<#assign carouselItems = carouselItems + ["<div class=\"item\"><a href=\"${link}\"><img class=\"carousel-image\" src=\"" + file + "\" /><div class=\"carousel-caption\" style=\"background-color: ${captionBg}\">" + captionIconBlock + captionTextBlock + "</div></a></div>"] />
 			<#assign carouselIndicators = carouselIndicators + ["<li data-target=\"#" + carouselId + "\" data-slide-to=\"" + item?index + "\"></li>"] />
 		</#if>
 	</#list>

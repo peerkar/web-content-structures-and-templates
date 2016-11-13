@@ -139,7 +139,31 @@
             "nestedFields": [
                 {
                     "label": {
-                        "en_US": "Text"
+                        "en_US": "Caption Icon"
+                    },
+                    "predefinedValue": {
+                        "en_US": ""
+                    },
+                    "style": {
+                        "en_US": ""
+                    },
+                    "tip": {
+                        "en_US": ""
+                    },
+                    "dataType": "image",
+                    "fieldNamespace": "ddm",
+                    "indexType": "",
+                    "localizable": false,
+                    "name": "captionIcon",
+                    "readOnly": false,
+                    "repeatable": false,
+                    "required": false,
+                    "showLabel": true,
+                    "type": "ddm-image"
+                },
+                {
+                    "label": {
+                        "en_US": "Caption Text"
                     },
                     "predefinedValue": {
                         "en_US": ""
@@ -154,12 +178,35 @@
                     "fieldNamespace": "ddm",
                     "indexType": "",
                     "localizable": true,
-                    "name": "text",
+                    "name": "captionText",
                     "readOnly": false,
                     "repeatable": false,
                     "required": false,
                     "showLabel": true,
                     "type": "ddm-text-html"
+                },
+                {
+                    "label": {
+                        "en_US": "Caption Background"
+                    },
+                    "predefinedValue": {
+                        "en_US": ""
+                    },
+                    "style": {
+                        "en_US": ""
+                    },
+                    "tip": {
+                        "en_US": "CSS background attribute value for example #fff"
+                    },
+                    "dataType": "string",
+                    "indexType": "",
+                    "localizable": false,
+                    "name": "captionBackground",
+                    "readOnly": false,
+                    "repeatable": false,
+                    "required": false,
+                    "showLabel": true,
+                    "type": "text"
                 },
                 {
                     "label": {
@@ -259,4 +306,4 @@
             ]
         }
     ]
-}
+}B
